@@ -1,3 +1,7 @@
+// Q 4)
+// const {today:{low:lowToday,high:highToday}} = LOCAL_FORECAST;
+
+
 // Q3) 
 // const squareList = arr => {
 //     // Only change code below this line
