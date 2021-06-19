@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+    
+</body>
+<script type="text/babel">
+    class Counter extends React.Component {
+        //state
+        constructor()
+        {
+            super();//isse hume this milta h class ka
+            this.state={
+                count:0
+            }
+        }
+        increment=()=>{
+            // this.state.count= this.state.count+1; never ever change the state of react  directly
+            // this.setState => use this to change the state
+
+            this.setState({
+                count:this.state.count+1
+            });
+        }
+
+        //the render is called everytime the state is changed
+        render(){
+            console.log('render');
+        return(
+            //JSX
+            <React.Fragment>
+                <h1>{this.state.count}</h1>
+                <button onClick={this.increment} >+</button>
+                <button>-</button>                
+                </React.Fragment>
+        )
+        }
+
+    } 
+    ReactDOM.render(<Counter/>,document.querySelector('#root'))
+</script>
+</html>

@@ -7,12 +7,13 @@ console.log(this);
 
 function fn()
 {
+    'use strict'
     console.log(this);
     console.log(`Hi my name is ${this.person}`);
 }
 
 //normal call
-// fn();
+fn();
 //in normal call the value of this is passed as window object only
 
 let obj ={
@@ -24,5 +25,5 @@ let obj ={
 // In this case my this is equal to the object through which the fn is called
 
 let ret = obj.func;
-ret();
+// ret();
 // In this case the this again passed as the window object.
