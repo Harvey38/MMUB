@@ -26,8 +26,17 @@ export default class Todo extends Component {
             tasks:nta,
             currTask:''
         })
-
-
+    }
+    onClickSample = ()=>{
+        console.log('Clicked');
+    }
+    onDelete = (id)=>{
+        let nfa = this.state.tasks.filter(function(tobj){
+            return tobj.id!=id
+        })
+        this.setState({
+            tasks:nfa
+        })
     }
     render() {
         return (
@@ -42,12 +51,14 @@ export default class Todo extends Component {
                         {
                             this.state.tasks.map(function(tobj){
                                 return(
-                                    <li>
+                                    <li key={tobj.txt}>
                                         <h1>{tobj.txt}</h1>
-                                        <button>Delete</button>
+                                        <button onClick={()=>{
+                                            this.onDelete(tobj.id)
+                                        }}>Delete</button>
                                     </li>
                                 )
-                            })
+                            }.bind(this))
                         }
                     </ul>
                 </div>
