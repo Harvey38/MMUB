@@ -32,6 +32,12 @@
             });
         }
 
+        decrement= ()=>{
+            this.setState({
+                count:this.state.count-1
+            })
+        }
+
         //the render is called everytime the state is changed
         render(){
             console.log('render');
@@ -40,7 +46,7 @@
             <React.Fragment>
                 <h1>{this.state.count}</h1>
                 <button onClick={this.increment} >+</button>
-                <button>-</button>                
+                <button onClick={this.decrement} >-</button>                
                 </React.Fragment>
         )
         }
