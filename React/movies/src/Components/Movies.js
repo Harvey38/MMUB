@@ -4,8 +4,16 @@ export default class Movies extends Component {
     constructor() {
         super();
         this.state = {
-            movies: getMovies()
+            movies: getMovies(),
+            currSearchText:''
         }
+    }
+    handleChange=(e)=>{
+        let val = e.target.value;
+        console.log(val);
+        this.setState({
+            currSearchText:val
+        })
     }
     onDelete=(id)=>{
         let arr =this.state.movies.filter(function(movieObj){
@@ -17,6 +25,22 @@ export default class Movies extends Component {
         });
     }
     render() {
+        console.log('render');
+        let {movies,currSearchText} =this.state; //ES6 destructuring
+        let filteredArr = [];
+        if(currSearchText=='')
+        {
+            filteredArr = movies;
+        }
+        else
+        {
+            filteredArr = movies.filter(function(movieObj) {
+                let title = movieObj.title.toLowerCase();
+                console.log(title);
+                return title.includes(currSearchText.toLowerCase());
+            })
+        }
+       
         return (
             //JSX
             <div className='container'>
@@ -25,6 +49,7 @@ export default class Movies extends Component {
                         Hello
                     </div>
                     <div className='col-9'>
+                        <input type='search' value={this.state.currSearchText} onChange={this.handleChange} ></input>
                         <table className="table">
                             <thead>
                                 <tr>
@@ -38,7 +63,7 @@ export default class Movies extends Component {
                             </thead>
                             <tbody>
                                 {
-                                    this.state.movies.map((movieObj) => {
+                                    filteredArr.map((movieObj) => {
                                         return (
                                             <tr key={movieObj._id} >
                                                 <td></td>
@@ -46,9 +71,9 @@ export default class Movies extends Component {
                                                 <td>{movieObj.genre.name}</td>
                                                 <td>{movieObj.numberInStock}</td>
                                                 <td>{movieObj.dailyRentalRate}</td>
-                                                <td><button onClick={function(){
+                                                <td><button onClick={()=>{
                                                     this.onDelete(movieObj._id)
-                                                }.bind(this)} type="button" className="btn btn-danger">Delete</button></td>
+                                                }} type="button" className="btn btn-danger">Delete</button></td>
                                             </tr>
                                         )
                                     })
