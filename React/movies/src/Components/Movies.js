@@ -56,8 +56,16 @@ export default class Movies extends Component {
                                     <th scope="col">#</th>
                                     <th scope="col">Title</th>
                                     <th scope="col">Genre</th>
-                                    <th scope="col">Stock</th>
-                                    <th scope="col">Rate</th>
+                                    <th scope="col">
+                                    <i class="fa fa-sort-asc" aria-hidden="true"></i>
+                                        Stock
+                                        <i class="fa fa-sort-desc" aria-hidden="true"></i>
+                                        </th>
+                                    <th scope="col">
+                                    <i class="fa fa-sort-asc" aria-hidden="true"></i>
+                                        Rate
+                                        <i class="fa fa-sort-desc" aria-hidden="true"></i>
+                                        </th>
                                     <th></th>
                                 </tr>
                             </thead>
