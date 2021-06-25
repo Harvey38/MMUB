@@ -12,23 +12,46 @@ export default class Movies extends Component {
         let val = e.target.value;
         console.log(val);
         this.setState({
-            currSearchText:val
+            currSearchText:val,
+    
         })
     }
     onDelete=(id)=>{
         let arr =this.state.movies.filter(function(movieObj){
-            return movieObj._id!=id;
+            return movieObj._id!==id;
         })
         // console.log(arr);
         this.setState({
             movies:arr
         });
     }
+    sortByRatings= (e)=>{
+        let className = e.target.className;
+        console.log(className);
+        let sortedMovies=[];
+        if(className=='fa fa-sort-asc')
+        {
+            //ascending order
+            sortedMovies = this.state.movies.sort(function(movieObjA,movieObjB){
+                return movieObjA.dailyRentalRate-movieObjB.dailyRentalRate
+            })
+        }
+        else
+        {
+            //descending order
+            sortedMovies =this.state.movies.sort(function(movieObjA,movieObjB){
+                return movieObjB.dailyRentalRate-movieObjA.dailyRentalRate
+            })
+        }
+        this.setState({
+            movies:sortedMovies
+        })
+    }
     render() {
         console.log('render');
         let {movies,currSearchText} =this.state; //ES6 destructuring
         let filteredArr = [];
-        if(currSearchText=='')
+        if(currSearchText==='')
         {
             filteredArr = movies;
         }
@@ -57,14 +80,14 @@ export default class Movies extends Component {
                                     <th scope="col">Title</th>
                                     <th scope="col">Genre</th>
                                     <th scope="col">
-                                    <i class="fa fa-sort-asc" aria-hidden="true"></i>
+                                    <i className="fa fa-sort-asc" aria-hidden="true"></i>
                                         Stock
-                                        <i class="fa fa-sort-desc" aria-hidden="true"></i>
+                                        <i className="fa fa-sort-desc" aria-hidden="true"></i>
                                         </th>
                                     <th scope="col">
-                                    <i class="fa fa-sort-asc" aria-hidden="true"></i>
+                                    <i onClick={this.sortByRatings} className="fa fa-sort-asc" aria-hidden="true"></i>
                                         Rate
-                                        <i class="fa fa-sort-desc" aria-hidden="true"></i>
+                                        <i onClick={this.sortByRatings} className="fa fa-sort-desc" aria-hidden="true"></i>
                                         </th>
                                     <th></th>
                                 </tr>
