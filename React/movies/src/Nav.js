@@ -1,10 +1,22 @@
 import React from 'react'
-
+import './nav.css';
+import {Link} from 'react-router-dom';
 function Nav() {
     return (
-        <div>
-            <h1>This is our Nav component</h1>
-        </div>
+       <nav className='nav-class' >
+         <h1>Logo</h1>
+         <ul className='list' >
+           <Link to='/' >
+           <li>Home</li>
+           </Link>
+           <Link to='/about'>
+           <li>About</li>
+           </Link>
+           <Link to='/movies'>
+           <li>Movies</li>
+           </Link>
+         </ul>
+       </nav>
     )
 }
 

@@ -1,6 +1,7 @@
 import React from 'react'
 
-function About() {
+function About({isAuth}) {
+    console.log(isAuth);
     return (
         <div>
             <h1>This the about component</h1>

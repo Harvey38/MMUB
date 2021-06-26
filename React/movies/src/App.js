@@ -10,7 +10,10 @@ function App() {
     <Switch> 
     <Route path='/' exact component={Home}/>
     <Route path='/movies' component={Movies}/>
-    <Route path='/about' component={About}/>
+    {/* <Route path='/about' component={About} isAuth={true} /> */}
+    <Route path='/about' render={(props)=>(
+      <About {...props} isAuth={true}/>
+    )}/>
   </Switch>
   </Router>
   );
