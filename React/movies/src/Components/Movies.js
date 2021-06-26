@@ -84,14 +84,14 @@ export default class Movies extends Component {
     handlePageChange = (pageNumber) => {
         this.setState({ currPage: pageNumber });
     }
-    handleGenreChange=(genre)=>{
+    handleGenreChange = (genre) => {
         this.setState({
-            cGenre:genre
+            cGenre: genre
         })
     }
     render() {
         console.log('render');
-        let { movies, currSearchText, currPage,genres,cGenre } = this.state; //ES6 destructuring
+        let { movies, currSearchText, currPage, genres, cGenre } = this.state; //ES6 destructuring
         let limit = 4;
         let filteredArr = [];
         if (currSearchText === '') {
@@ -104,10 +104,9 @@ export default class Movies extends Component {
                 return title.includes(currSearchText.toLowerCase());
             })
         }
-        if(cGenre!='All Genres')
-        {
-            filteredArr = filteredArr.filter(function(movieObj){
-                return movieObj.genre.name==cGenre
+        if (cGenre != 'All Genres') {
+            filteredArr = filteredArr.filter(function (movieObj) {
+                return movieObj.genre.name == cGenre
             })
         }
         let numberofPage = Math.ceil(filteredArr.length / limit);
@@ -129,13 +128,13 @@ export default class Movies extends Component {
                         <div className='row'>
                             <div className='col-3'>
                                 <ul className="list-group">
-                                 {
-                                     genres.map((genreObj)=>(
-                                         <li onClick={()=>this.handleGenreChange(genreObj.name)} key={genreObj._id} className='list-group-item'>
-                                             {genreObj.name}
-                                         </li>
-                                     ))
-                                 }
+                                    {
+                                        genres.map((genreObj) => (
+                                            <li onClick={() => this.handleGenreChange(genreObj.name)} key={genreObj._id} className='list-group-item'>
+                                                {genreObj.name}
+                                            </li>
+                                        ))
+                                    }
                                 </ul>
                                 <h5>Current Genre : {cGenre}</h5>
                             </div>
