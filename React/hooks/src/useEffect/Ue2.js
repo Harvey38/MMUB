@@ -13,7 +13,10 @@ function Ue2() {
     return (
         <div>
             <p>You clicked the button {count} times</p>
-            <button onClick={()=>{setCount(count+1)}}>Click</button>            
+            <button onClick={()=>{ 
+                console.log('Hello'); 
+                setCount(count+1)
+                }}>Click</button>            
         </div>
     )
 }
