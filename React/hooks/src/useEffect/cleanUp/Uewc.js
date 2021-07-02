@@ -6,11 +6,11 @@ function Uewc() {
     useEffect(()=>{
         console.log('useEffect');
         document.title = `Clicked ${count} times`;
-        //cleanUp
+        //cleanUp optional
         return ()=>{
             alert(`I Will be called before the next useEffect is called' ${count}`)
         }
-    },[])
+    })
     return (
         <div>
             <p>{count}</p>
