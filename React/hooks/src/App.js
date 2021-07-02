@@ -4,6 +4,7 @@ import Us from './UseState/Us';
 import Ue2 from './useEffect/Ue2';
 import Infinite from './useEffect/Infinite';
 import Ue3 from './useEffect/Ue3';
+import Uewc from './useEffect/cleanUp/Uewc';
 function App() {
   return (
 <>
@@ -12,7 +13,8 @@ function App() {
  */}
 {/* <Ue2/> */}
 {/* <Infinite/> */}
-<Ue3/>
+{/* <Ue3/> */}
+<Uewc/>
 </>
   );
 }
