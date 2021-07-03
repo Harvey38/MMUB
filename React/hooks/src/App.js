@@ -6,6 +6,7 @@ import Infinite from './useEffect/Infinite';
 import Ue3 from './useEffect/Ue3';
 import Uewc from './useEffect/cleanUp/Uewc';
 import Main from './Context/Main';
+import Central from './Context2/Central';
 function App() {
   return (
 <>
@@ -16,7 +17,8 @@ function App() {
 {/* <Infinite/> */}
 {/* <Ue3/> */}
 {/* <Uewc/> */}
-<Main/>
+{/* <Main/> */}
+<Central/>
 </>
   );
 }
