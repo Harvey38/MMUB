@@ -27,8 +27,21 @@ function Demo() {
         setPassword('')
         setEmail('')
     }
-    const handleSignOut =()=>{
-
+    const handleSignOut =async()=>{
+        try{
+            setLoading(true);
+            let res = await auth.signOut();
+            console.log(res);
+            setUser(null);
+            setLoading(false)
+        }
+        catch(e){
+            setError(e.message);
+            setTimeout(()=>{
+                setError('')
+            },2000)
+            setLoading(false)
+        }
     }
     return (
         <>
