@@ -9,7 +9,6 @@ function Signup() {
     const[loading,setLoading] = useState(false);
     const [file,setFile] = useState(null)
     const {signup} =useContext(AuthContext);
-    console.log(signup);
     const handleSignup =async (e)=>{
         e.preventDefault();
         try{
@@ -88,7 +87,7 @@ function Signup() {
                     <label htmlFor='profile'>Profile image</label>
                     <input type='file' accept='image/*' onChange={handleFileSubmit}></input>
                 </div>
-                <button type='submit' disabled={loading}>Login</button>
+                <button type='submit' disabled={loading}>SignUp</button>
             </form>
         </div>
     )
