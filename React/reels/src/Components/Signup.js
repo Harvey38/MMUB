@@ -48,10 +48,11 @@ function Signup() {
                 profileUrl:downloadUrl,
                 postIds:[]
             })
+            setLoading(false);
+            console.log('User has Signed up');
         }
     
-        setLoading(false);
-        console.log('User has Signed up');
+      
     }
     catch(err){
         setError(err)
