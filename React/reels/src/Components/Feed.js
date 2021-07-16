@@ -18,7 +18,7 @@ function Feed() {
         <>
         { userData==null ? <CircularProgress />:<>
         <Header userData={userData} />
-        <div style={{height:'9.5vh'}}/>
+        <div style={{height:'1.5vh'}}/>
         <div className='feed-container'>
             <div className='center'>
                 <UploadFile userData={userData}/>
