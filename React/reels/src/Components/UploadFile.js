@@ -19,21 +19,21 @@ function UploadFile(props) {
         console.log(file);
         if(!file){
             setError('Please select a file');
-            setTimeout(()=>{setError('')},2000)
+            setTimeout(()=>{setError(null)},2000)
             return;
         }
 
         if(types.indexOf(file.type)==-1)
         {
             setError('Please select a video file');
-            setTimeout(()=>{setError('')},2000)
+            setTimeout(()=>{setError(null)},2000)
             return;
         }
 
         if(file.size/(1024*1024)>100)
         {
             setError('The selected file is too big');
-            setTimeout(()=>{setError('')},2000)
+            setTimeout(()=>{setError(null)},2000)
             return;
         }
         const id = uuidv4();
@@ -46,7 +46,7 @@ function UploadFile(props) {
         function fn2(error){
             setError(error);
             setTimeout(()=>{
-                setError('')
+                setError(null)
             },2000);
             setLoading(false)
         }
@@ -75,7 +75,7 @@ function UploadFile(props) {
               }).catch(e=>{
                   setError(e);
                   setTimeout(()=>{
-                      setError('')
+                      setError(null)
                   },2000);
                   setLoading(false)
               })
