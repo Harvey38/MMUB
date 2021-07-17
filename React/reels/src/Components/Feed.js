@@ -4,7 +4,8 @@ import {AuthContext} from '../Context/AuthProvider';
 import {database} from '../firebase'
 import CircularProgress from '@material-ui/core/CircularProgress';
 import UploadFile from './UploadFile';
-import './Feed.css'
+import './Feed.css';
+import Posts from './Posts';
 function Feed() {
     const {currentUser} =useContext(AuthContext);
     const [userData,setUserData] = useState(null);
@@ -22,6 +23,7 @@ function Feed() {
         <div className='feed-container'>
             <div className='center'>
                 <UploadFile userData={userData}/>
+                <Posts userData={userData}/>
             </div>
         </div>
 
