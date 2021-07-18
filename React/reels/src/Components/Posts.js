@@ -18,6 +18,7 @@ import Video from './Video';
 import { database } from '../firebase';
 import Likes from './Likes';
 import AddComment from './AddComment';
+import Comments from './Comments';
 const useStyles = makeStyles({
     root: {
       width: '100%',
@@ -156,7 +157,7 @@ function Posts({userData=null}) {
                                 <hr style={{ border: "none", height: "1px", color: "#dfe6e9", backgroundColor: "#dfe6e9" }} />
                                 <CardContent className={classes.seeComments}>
                                   
-                                {/* <Comments userData={userData} postData={post} /> */}
+                                <Comments userData={userData} postData={post} />
                                 </CardContent>
                                 
                               </Card>
