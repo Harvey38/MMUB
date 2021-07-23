@@ -2,7 +2,7 @@ import React from 'react'
 import {buyBall} from './redux/balls/BallActions';
 import {connect} from 'react-redux'
 function BallContainer(props) {
-    console.log(props);
+    console.log('ball render');
     return (
         <div>
             <h2>Number of Balls- {props.numofBalls}</h2>
@@ -12,9 +12,9 @@ function BallContainer(props) {
 }
 //first method for reading from global state
 const mapStateToProps = state=>{
-    
+   
     return{
-        numofBalls:state.numofBalls
+        numofBalls:state.ball.numofBalls
     }
 }
 const mapDispatchToProps = dispatch=>{
