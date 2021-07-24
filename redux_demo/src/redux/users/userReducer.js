@@ -5,6 +5,7 @@ const initialState = {
     error:''
 }
 const userReducer = (state=initialState,action)=>{
+    console.log(state);
     switch(action.type)
     {
         case FETCH_USERS_REQUEST:

@@ -3,6 +3,7 @@ const initialState = {
 }
 const BUY_BALL = 'BUY_BALL';
 const BallReducer=(state=initialState,action)=>{
+    console.log(state);
     switch(action.type)
     {
         case BUY_BALL:
