@@ -30,7 +30,7 @@ function Navbar2({cart}) {
       });
   
       setCartCount(count);
-    }, [cart, cartCount]);
+    }, [cart]);
   
     return (
         <div className={classes.root}>
