@@ -1,20 +1,19 @@
 import React from 'react';
 import {skinCodes} from '../../constants/typeCodes';
-// import * as actionTypes from '../../actions/actionTypes';
-// import { bindActionCreators } from 'redux';
-
-// import { withRouter } from "react-router-dom";
+import * as actionTypes from '../../actions/actionTypes';
+import { connect } from 'react-redux';
+import * as documentActions from './../../actions/documentActions'
 import { useHistory } from "react-router-dom";
 function GettingStarted(props) {
      let history = useHistory();
-     const onChange = async (skinCd) => {
+     const onChange = (skinCd) => {
 
-        // if(props.document.id){
-        //     //  props.updateDocument(props.document.id, skinCd);        
-        // }
-        // else{
-        //     //  props.setDocument(skinCd); 
-        // }
+        if(props.document.id){
+             props.updateDocument(skinCd);        
+        }
+        else{
+             props.setDocument(skinCd); 
+        }
         history.push('/contact');
       }
 
@@ -31,7 +30,7 @@ function GettingStarted(props) {
                     {
                         skinCodes.map((value,index) => {
                             return( <div key={index} className="template-card rounded-border">
-                                  <i className={(value == 'demo-value'? 'selected fa fa-check' :'hide') } ></i>
+                                  <i className={(value == props.document.skinCd? 'selected fa fa-check' :'hide') } ></i>
                                 <img  className='' src={'/images/' + value + '.svg'}/>
                                 <button type="button" onClick={()=>onChange(value)}  className='btn-select-theme'>USE TEMPLATE</button>
                             </div>);
@@ -45,8 +44,18 @@ function GettingStarted(props) {
         );
     
 }
-  
+ const mapStateToProps=(state)=>{
+     return {
+         document:state.document
+     }
+ } 
+ const mapDispatchToProps = dispatch=>{
+     return{
+         setDocument:(skinCd)=>dispatch(documentActions.setSkinCd(skinCd)),
+         updateDocument:(skinCd)=>dispatch(documentActions.updateSkinCd(skinCd))
+     }
+ }
 
 
-export default GettingStarted
+export default connect(mapStateToProps,mapDispatchToProps)(GettingStarted)
 
