@@ -1,9 +1,9 @@
 import React,{useEffect,useState} from "react";
 import update from 'immutability-helper';
-// import { connect } from "react-redux";
+import { connect } from "react-redux";
 // import {bindActionCreators} from 'redux';
-// import * as authActions from '../../actions/authActions';
-// import { isLoaded } from 'react-redux-firebase'
+import * as authActions from '../../actions/authActions';
+import { isLoaded } from 'react-redux-firebase'
 import { useHistory } from "react-router";
 
   function Login(props) {
@@ -11,11 +11,11 @@ import { useHistory } from "react-router";
     let history = useHistory();
     const [email,setEmail] = useState('');
     const [password,setPassword]= useState('');
-    // useEffect(() => {
-    //   if(props.auth?.uid){
-    //     history.push('/')
-    //   }
-    // }, [props])
+    useEffect(() => {
+      if(props.authFirebase?.uid){
+        history.push('/')
+      }
+    }, [props])
 const handleEmail= (e)=>{
 setEmail(e.target.value);
 }
@@ -24,17 +24,17 @@ const handlePassword=(e)=>{
 }
     const onSubmit=()=>{
     
-      // let obj = {email:email,password:password}
-      // console.log(obj)
-      // props.signIn(obj)
+      let obj = {email:email,password:password}
+      console.log(obj)
+      props.signIn(obj)
     }
 
 
     return (
       <>
-      {/* If we visit the login being signed in we will be unable to see the form */}
+      {!isLoaded(props.authFirebase)?<></>:
       <>
-      {props.authMine.loading?<h4 style={{marginTop:'10%',height:'52vh'}}>Patiently Wait...we are logging you in</h4>:
+      {props.authMine?.loading?<h4 style={{marginTop:'10%',height:'52vh'}}>Patiently Wait...we are logging you in</h4>:
           <div className="container med contact">
             <div className="section funnel-section">
                 <div className="form-card">
@@ -62,14 +62,26 @@ const handlePassword=(e)=>{
         </div>
   }
   </>
-  
+  }
         </>
+
+        
     );
   }
 
-
+const mapStateToProps =(state)=>{
+  return{
+    authMine:state.auth,
+    authFirebase:state.firebase.auth
+  }
+}
+const mapDispatchToProps = dispatch=>{
+  return{
+  signIn:(userData)=>dispatch(authActions.signIn(userData))
+  }
+}
 
  
 
 
-  export default Login
+  export default  connect(mapStateToProps,mapDispatchToProps)(Login)
