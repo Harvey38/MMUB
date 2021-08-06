@@ -2,8 +2,6 @@ let introduction=['Hello','I','am','Tushar'];
 // let greeting = introduction[0];
 // let pronoun = introduction[1];
 //traditional
-
-
 ///////////////Destructuring
 
 // let [greeting,pronoun,variable,name]=introduction;
